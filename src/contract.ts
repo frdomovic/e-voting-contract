@@ -42,6 +42,8 @@ export class VotingContract {
       "Only relayer account can add voting Keys"
     );
 
+    assert( Math.floor(Number(near.blockTimestamp()) / 1e6) < this.register_time, "Registration period has ended.")
+
     const keyExists: boolean | null = this.voting_keys.get(_secret_key);
 
     if (keyExists == null) {
