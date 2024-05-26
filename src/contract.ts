@@ -69,6 +69,8 @@ export class VotingContract {
     const caller_id = near.predecessorAccountId();
     const voterExists = this.voters.contains(caller_id);
 
+    assert( Math.floor(Number(near.blockTimestamp()) / 1e6) < this.register_time, "Registration period has ended.")
+
     if (voterExists) {
       near.log("Voter already registered.");
       return false;
@@ -117,6 +119,8 @@ export class VotingContract {
       caller_id == this.relayer_id,
       "Voting can only be executed through a relayer account."
     );
+
+    assert( Math.floor(Number(near.blockTimestamp()) / 1e6) < this.vote_time, "Voting period has ended.")
 
 
     const encoder = new TextEncoder();
