@@ -3,8 +3,8 @@
 : <<'COMMENT'
 USAGE
 
-contract $: ./deploy.sh --accountId cts-acc1.testnet --ownerId cts-acc1.testnet --relayerId cts-acc1.testnet \\
- --registerTime 1711126476000 --voteTime 1711126476000 
+contract $: ./deploy.sh --accountId cts-acc-test7.testnet --ownerId cts-acc-test7.testnet --relayerId cts-acc-test7.testnet \\
+ --registerTime 1716802125000 --voteTime 1716802125000
 
 > blockchain-voting@1.0.0 build
 > near-sdk-js build src/contract.ts build/blockchain-voting.wasm
@@ -64,4 +64,4 @@ fi
 # 3. Deploy the smart contract
 rm -rf neardev && \
 npm run build && \
-near deploy $ACCOUNT_ID build/blockchain-voting.wasm --initFunction init --initArgs '{"_owner_id":"'$OWNER_ID'", "_relayer_id": "'$RELAYER_ID'", "_register_time": "'$REGISTER_TIME'", "_vote_time": "'$VOTE_TIME'"}'
+near deploy $ACCOUNT_ID ../build/blockchain-voting.wasm --initFunction init --initArgs '{"_owner_id":"'$OWNER_ID'", "_relayer_id": "'$RELAYER_ID'", "_register_time": "'$REGISTER_TIME'", "_vote_time": "'$VOTE_TIME'"}'
