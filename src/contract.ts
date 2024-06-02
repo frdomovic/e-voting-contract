@@ -152,7 +152,7 @@ export class VotingContract {
       let currentVote = this.voting_options.get(_vote_option) + 1;
       this.voting_options.set(_vote_option, currentVote);
       near.log("Vote succeeded.");
-      return {result: true, error: "Vote succeeded."};
+      return {result: true, data: "Vote succeeded."};
     }
   }
 }
